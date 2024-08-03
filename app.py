@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import pymongo
 import random
 import string
@@ -30,18 +30,24 @@ def home():
             'long_url' : long_url,
             'short_url' : short_url,
             'short_id' : short_id,
+            'clicks' : 0,
         })
 
         return render_template("base.html", short_url=short_url)
 
     return render_template("base.html")
 
-
-
-
-
-
-
+@app.route('/<id>')
+def redirect_url(id):
+    x = collection.find_one({'short_id' : id})
+    if x:
+        original_link = x['long_url']
+        click_increment = x['clicks'] + 1
+        collection.update_one({'short_id' : id}, {'$set': {'clicks' : click_increment}})
+        return redirect(original_link)
+    else:
+        flash('Invalid URL!, You did not stored this URL.')
+        return redirect(url_for('home'))
 
 
 
