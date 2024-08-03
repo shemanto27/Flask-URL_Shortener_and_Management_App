@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="../static/styles.css">
     <script>
         function my_function() {
-        var copyText = document.getElementById("myInput"); // Get the text field
+        var copyText = document.getElementById("short_link"); // Get the text field
         copyText.select(); // Select the text field
         copyText.setSelectionRange(0, 99999); // For mobile devices
         
         navigator.clipboard.writeText(copyText.value); // Copy the text inside the text field
-        alert("Short-URL has been copied!")
+        alert("Short-URL has been copied!");
         }
     </script>
 </head>
@@ -35,6 +35,7 @@
         <hr>
         <input type="text" value="{{ short_url }}" id="short_link">
         <button onclick="my_function">Copy Text</button>
+        {% endif %}
     </div>    
 
     </main>
