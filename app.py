@@ -49,8 +49,14 @@ def redirect_url(id):
         flash('Invalid URL!, You did not stored this URL.')
         return redirect(url_for('home'))
 
-
-
+@app.route('/stats')
+def stats():
+    documents = collection.find()
+    records = []
+    for doc in documents:
+        record = dict(doc)
+        records.append(record)
+    return render_template('stats.html', records=records)
 
 if __name__ == "__main__":
     app.run(debug=True)

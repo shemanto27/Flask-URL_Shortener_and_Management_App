@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Statistics</title>
+</head>
+<body>
+    <header>
+        <h1>🔗URL Shortener: Your Favorite URL Shortener Tool</h1>
+        <h5>Your generate short link of your social media links or businesses, see how many times the link was hit and statistics- ALL IN ONE PLACE❗</h5>
+        <hr>
+        <a href="{{url_for('home') }}">Home</a>
+        <a href="{{ url_for('stats') }}">Stats</a>
+    </header>
+    <h1>Statistics of Your Links</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Short URLs</th>
+                <th>Original URLs</th>
+                <th>Short ID</th>
+                <th>Clicks</th>    
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record['short_url'] }}</td>
+                <td>{{ record['long_url'] }}</td>
+                <td>{{ record['short_id'] }}</td>
+                <td>{{ record['clicks'] }}</td>
+            </tr>
+            {% endfor %}  
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+</body>
+</html>
