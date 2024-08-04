@@ -3,19 +3,20 @@
 {% block content %}
 <h1>Register</h1>
 <form action="{{ url_for('registration') }}" method="post">
-
     <input type="email" name="user_email" placeholder="Enter Email Address">
     <input type="text" name="user_name" placeholder="Enter User Name">
     <input type="password" name="password" placeholder="Enter password">
     <button type="submit">Submit</button>
 </form>
-{% with all_messages = get_flashed_messages() %} <!-- {% with %} statement is used to create a new inner scope in which you can define variables that will be available only within that scope. In here a new variable messages and assigns it the result of get_flashed_messages(). This new variable is only accessible within the {% with %}...{% endwith %} block. -->
-{% if all_messages %}
-{% for message in all_messages %}
-<li>{{ message }}</li>
-{% endfor %}
-{% endif %}
-{% endwith %}
 
+{% with all_messages = get_flashed_messages() %}
+    {% if all_messages %}
+        <ul>
+            {% for message in all_messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
 {% endblock %}
 

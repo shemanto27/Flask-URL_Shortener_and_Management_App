@@ -74,7 +74,7 @@ def registration():
         
         #checking user already exist or not
         if collection_users.find_one({'Email' : user_mail}):
-            flash('User already exists!', 'Try to LogIn')
+            flash('User already exists!', 'Try to Login')
         else:
             collection_users.insert_one({
                 'Email' : user_mail,
@@ -85,12 +85,19 @@ def registration():
             return redirect(url_for('login'))
     return render_template('registration.html')
 
-
-
-
-
-
-
+#LogIn Page
+@app.route('/login', methods=['GET' ,'POST'])
+def login():
+    if request.method == 'POST':
+        user_mail = request.form['user_email']
+        password = request.form['password']
+        if collection_users.find_one({'Email' : user_mail, 'Password' : password}):
+            flash('Login Successful!')
+            return redirect(url_for('home'))
+        else:
+            flash('Incorrect Credential')
+            return redirect(url_for('login'))
+    return render_template('login.html')
 
 
 
