@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Statistics</title>
-</head>
-<body>
-    <header>
-        <h1>🔗URL Shortener: Your Favorite URL Shortener Tool</h1>
-        <h5>Your generate short link of your social media links or businesses, see how many times the link was hit and statistics- ALL IN ONE PLACE❗</h5>
-        <hr>
-        <a href="{{url_for('home') }}">Home</a>
-        <a href="{{ url_for('stats') }}">Stats</a>
-    </header>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>Statistics of Your Links</h1>
 
     <table class="table">
@@ -35,13 +23,4 @@
             {% endfor %}  
         </tbody>
     </table>
-
-
-
-
-
-
-
-
-</body>
-</html>
+{% endblock %}

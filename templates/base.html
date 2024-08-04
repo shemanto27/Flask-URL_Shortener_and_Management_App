@@ -4,17 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener</title>
-    <link rel="stylesheet" href="../static/styles.css">
-    <script>
-        function my_function() {
-        var copyText = document.getElementById("short_link"); // Get the text field
-        copyText.select(); // Select the text field
-        copyText.setSelectionRange(0, 99999); // For mobile devices
-        
-        navigator.clipboard.writeText(copyText.value); // Copy the text inside the text field
-        alert("Short-URL has been copied!");
-        }
-    </script>
+    <link rel="stylesheet" href="../static/styles/styles.css">
+    <script src="../static/javascript/notification.js"></script>
 </head>
 <body>
     <header>
@@ -25,23 +16,8 @@
         <a href="{{ url_for('stats') }}">Stats</a>
     </header>
 
-    <main>
-    <div class="form_section">
-            <form action="{{ url_for("home") }}" method="post" >
-            <input type="text" name="long_url" placeholder="Enter Your URL Here...." required>
-            <button type="submit">Submit</button>
-            </form>
-    </div>
-
-    <div class="result_section">
-        {% if short_url %}
-        <hr>
-        <input type="text" value="{{ short_url }}" id="short_link">
-        <button onclick="my_function()">Copy Text</button>
-        {% endif %}
-    </div>    
-
-    </main>
+    {% block content %}
+    {% endblock %}
 
     <footer>
         <p>Hey Curious 👋 I'm Shemanto Sharkar, the creator of Color Palette Generator. You can follow my work on <a href="https://www.linkedin.com/in/shemanto/" target="_blank">LinkedIn</a>.</p>

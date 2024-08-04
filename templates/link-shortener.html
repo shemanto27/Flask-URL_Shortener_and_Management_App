@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="form_section">
+            <form action="{{ url_for("home") }}" method="post" >
+            <input type="text" name="long_url" placeholder="Enter Your URL Here...." required>
+            <button type="submit">Submit</button>
+            </form>
+    </div>
+
+    <div class="result_section">
+        {% if short_url %}
+        <hr>
+        <input type="text" value="{{ short_url }}" id="short_link">
+        <button onclick="my_function()">Copy Text</button>
+        {% endif %}
+    </div>    
+
+</main>
+{% endblock %}
