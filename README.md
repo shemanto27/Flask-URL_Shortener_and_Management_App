@@ -12,9 +12,9 @@ URL shortener allows to create a shortened link making it easy to share. After s
 
 ## Roadmap
 
-- ✅August 3,2024: version:1.1 Releaded with URL shortener and Statics page.Statistics page  shows only a table that has short link, original link, link ID, Number of Clicks. Made with only HTML,CSS and Python
+- ✅August 3,2024: version:1.1 Released with URL shortener and Statics page.Statistics page  shows only a table that has short link, original link, link ID, Number of Clicks. Made with only HTML,CSS and Python
 
-- login page and user varification
+- ✅login page,Registration page and user verification add (❗Problem: flash messages showing always,directly goes to home page)
 - Link Grouping
 - Stats Visualization
 - Quick Copy lists
